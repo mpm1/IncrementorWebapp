@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebIncrementor.Models
 {
-    public class IncrementorDBContext : DbContext
+    public class IncrementorDBContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Incrementor> Incrementors { get; set; }
 
@@ -15,6 +16,11 @@ namespace WebIncrementor.Models
         public IncrementorDBContext() : base()
         {
             CanUseTransactions = false;
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

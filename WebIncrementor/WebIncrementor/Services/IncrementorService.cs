@@ -60,5 +60,22 @@ namespace WebIncrementor.Services
 
             return incrementor;
         }
+
+        public Incrementor SetIncrementorValue(string userId, ulong value, bool addUserIfNotExists = false)
+        {
+            Incrementor incrementor = GetIncrementor(userId, addUserIfNotExists);
+
+            if (incrementor != null)
+            {
+                incrementor.Value = value;
+
+                if (Db.Entry(incrementor).State == Microsoft.EntityFrameworkCore.EntityState.Unchanged)
+                {
+                    Db.Entry(incrementor).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                }
+            }
+
+            return incrementor;
+        }
     }
 }

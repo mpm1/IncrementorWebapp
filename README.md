@@ -9,6 +9,7 @@ Start Time: Jan 8, 2020 - 7:30 PM
 How much time did you spend on the assignment? Normally, this is expressed in hours.
 ### Assumptions made
 * The users integer sequence always starts at 0.
+* At the moment it's assumed that the size will fit inside an unsigned long. Maximum value: 18,446,744,073,709,551,615
 ### Shortcuts/Compromises made
 If applicable. Did you do something that you feel could have been done better in a real-world application? Please
 let us know.
